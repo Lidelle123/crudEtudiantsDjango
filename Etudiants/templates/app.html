@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion des Etudiants</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="container bg-dark">
+
+    {% include "menu.html" %} {% block content %} {% endblock %}
+
+    <script src="{%  static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

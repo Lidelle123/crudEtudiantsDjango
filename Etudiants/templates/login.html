@@ -1,0 +1,29 @@
+{% extends 'app.html' %} {% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <h4>Authentification</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div>
+            <!--<h2 class="">{{ message }}</h2>-->
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="entrez votre nom">
+            <br>
+            <br>
+            <input type="password" name="password" id="password" placeholder="entrez votre mot de passe">
+            <br>
+            <br>
+            <!--{% include 'student/form.html' %}-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'app.html' %} {% block content %}
+<div class="card">
+  <div class="card-header">
+    <div class="row col-md-12">
+      <div class="col-md-6">
+        <h4>Supprimer Etudiants</h4>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <h1>Confirmer la suppression de {{ student.name }}</h1>
+    </div>
+
+    <form method="post" action="">
+      {% csrf_token %}
+      <!--{% include 'student/form.html' %}-->
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <button>
+        <a href="{% url 'index' %}" class="btn btn-primary">Cancel</a>
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

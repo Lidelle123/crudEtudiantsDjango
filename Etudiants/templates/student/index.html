@@ -1,0 +1,134 @@
+{% extends 'app.html' %} {% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <div class="row col-md-12">
+      <div class="col-md-6">
+        <h4>Liste des Etudiants</h4>
+      </div>
+      <div class="col-md-6">
+        <a
+          href="{% url 'create' %}"
+          class="btn btn-success"
+          style="float: right"
+          >Ajouter</a
+        >
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered border-primary bg-white">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Date de Naissance</th>
+              <th>Filiere</th>
+              <th colspan="2">
+                <center>Action</center>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in students %}
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.birthdate }}</td>
+              <td>{{ item.filiere_id.name }}</td>
+              <td>
+                <center>
+                  <a href="update/{{ item.id }}" class="btn btn-success"
+                    >Modifier</a
+                  >
+                </center>
+              </td>
+              <td>
+                <center>
+                  <a href="delete/{{ item.id }}" class="btn btn-danger"
+                    >Supprimer</a
+                  >
+                </center>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="8">
+                <div class="text-center">Aucun Etudiant pour le moment</div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if students.has_other_pages %}
+<div class="pagination">
+  <span class="step-links">
+    {% if students.has_previous %}
+    <a href="?page=1">first</a>
+    <a href="?page={{ students.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current-page">
+      Page {{ students.number }} of {{ students.paginator.num_pages }}.
+    </span>
+
+    {% if students.has_next %}
+    <a href="?page={{ students.next_page_number }}">next</a>
+    <a href="?page={{ students.paginator.num_pages }}">last </a>
+    {% endif %}
+  </span>
+</div>
+{% endif %} {% endblock %}
+
+<!--<div class="container bg-white">
+  <div class="row">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+
+  <div class="card" style="width: 18rem">
+    {% if students.image %}
+    <img
+      src="{{ students.image.url }}"
+      class="card-img-top card-img-w-75 card-img-h-25"
+      alt="image"
+    />
+    {% else %}
+    <h4>pas d'image</h4>
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{students.name}}</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>-->
+
+<!--<div class="pagination">
+    {% if students.has_previous %}
+    <a href="?page={{ students.previous_page_number }}">Previous</a> {% endif %} 
+    {% for num in students.paginator.page_range %} {% if num == students.number %}
+    <span class="page current">{{ num }}</span> {% elif num > students.number|add:'-3' and num
+    < students.number|add: '3' %} <a href="?page={{ num }}" class="page">{{ num }}</a>
+        {% endif %} {% endfor %} {% if students.has_next %}
+        <a href="?page={{ students.next_page_number }}">Next &raquo;</a> {% endif %}
+</div>
+-->
+<!--https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/-->

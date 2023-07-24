@@ -1,0 +1,23 @@
+{% extends 'app.html' %} {% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <h4>Ajout des Etudiants</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div>
+            <!--<h2 class="">{{ message }}</h2>-->
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %} {{ form.as_p }}
+            <!--{% include 'student/form.html' %}-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
